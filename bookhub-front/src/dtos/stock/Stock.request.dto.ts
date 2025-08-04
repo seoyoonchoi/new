@@ -1,10 +1,10 @@
 import { StockActionType } from "@/apis/enums/StockActionType";
 
 export interface StockUpdateRequestDto{
-    type: StockActionType;
+    stockActionType: StockActionType;
     employeeId : number;
-    isbn: string;
+    bookIsbn: string;
     branchId: number;
-    stockAmount: number;
+    amount: number;
     description? : string;
 }

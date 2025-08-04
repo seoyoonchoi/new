@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StockUpdateRequestDto {
-    private String type;
+    private String stockActionType;
     private Long employeeId;
     private String bookIsbn;
     private Long branchId;
