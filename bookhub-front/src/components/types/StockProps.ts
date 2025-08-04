@@ -1,8 +1,6 @@
-interface Branch{
-  id: number
-  name : string
+import { BranchSearchResponseDto } from '@/dtos/branch/response/Branch-search.response.dto';
+
+export interface StockProps {
+  branches?: BranchSearchResponseDto[];
 }
 
-export interface StockProps{
-  branches? : Branch[]
-}
