@@ -48,8 +48,6 @@ import SaleQuantityByBranch from "./views/statistics/salesQuantity-statistics/Sa
 import SalesQuantityByPeriod from "./views/statistics/salesQuantity-statistics/SalesQuantityByPeriod";
 import SalesQuantityByDiscountPolicy from "./views/statistics/salesQuantity-statistics/SalesQuantityByDiscountPolicy";
 import SalesQuantityByCategory from "./views/statistics/salesQuantity-statistics/SalesQuantityByCategory";
-import StockPage from "./views/stocks/StockPage";
-import Revenue from "./views/statistics/revenue";
 import RevenueDashboard from "./views/statistics/revenue/RevenueDashboard";
 import Stock from "./views/stocks";
 
@@ -131,7 +129,6 @@ function App() {
                   </RequireAuth>
                 }
               />
-              ƒ
               <Route
                 path="/branches"
                 element={

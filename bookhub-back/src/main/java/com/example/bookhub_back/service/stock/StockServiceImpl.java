@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,7 +50,7 @@ public class StockServiceImpl implements StockService{
             EmployeePrincipal employeePrincipal, Long stockId, StockUpdateRequestDto dto) {
 
 
-        StockActionType actionType = StockActionType.valueOf(dto.getType().toUpperCase());
+        StockActionType actionType = StockActionType.valueOf(dto.getType().toUpperCase(Locale.ROOT));
         Long updatedAmount;
 
         Stock stock;
@@ -93,7 +94,7 @@ public class StockServiceImpl implements StockService{
         stockRepository.save(stock);
 
         StockLog log = StockLog.builder()
-                .stockActionType(StockActionType.valueOf(dto.getType()))
+                .stockActionType(StockActionType.valueOf(dto.getType().toUpperCase(Locale.ROOT)))
                 .employee(employeeRepository.findById(employeePrincipal.getEmployeeId())
                         .orElseThrow(() -> new IllegalArgumentException("로그인한 사용자가 존재하지 않습니다")))
                 .bookIsbn(bookRepository.findById(dto.getBookIsbn()).orElseThrow(()-> new IllegalArgumentException((ResponseMessageKorean.RESOURCE_NOT_FOUND))))
