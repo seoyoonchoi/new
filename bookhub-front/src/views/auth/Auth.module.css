@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  flex-direction: column;
+}
+
+.logoImg {
+  width: 300px;
+  height: 150px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.formBox {
+  background-color: white;
+  padding: 30px 40px;
+  border: 1px solid #459dcd;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(73, 170, 250, 0.5);
+  width: 100%;
+  max-width: 400px;
+}
+
+.formBox h1 {
+  text-align: center;
+  font-size: 50px;
+  color: #7fb8fe;
+}
+
+.formBox input,
+.formBox select,
+.formBox button {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  margin: 6px 0 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.formBox input,
+.formBox select {
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+.formBox input:focus,
+.formBox select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.formBox button {
+  background-color: #7fb8fe;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formBox button:hover {
+  background-color: #2b5185;
+}
+
+.formBox .failP,
+.formBox .successP {
+  text-align: left;
+  font-size: 12px;
+  margin: -10px 0 1px;
+  color: #e74c3c;
+}
+
+.formBox .successP {
+  color: #49b935;
+}
+
+.formBox .selectP {
+  text-align: center;
+  font-size: 14px;
+}
+
+.selectP a {
+  color: #7fb8fe;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.selectP a:hover {
+  text-decoration: underline;
+}
+
+.selectP a:not(:last-child)::after {
+  content: " |";
+  margin-left: 8px;
+  color: #999;
+}
+
+.formBox .getP {
+  text-align: center;
+  font-size: 20px;
+  color: #00000077;
+}
+
+.getP strong {
+  color: #2b5185;
+}
