@@ -1,26 +1,26 @@
 import { StockLogResponseDto } from '@/dtos/stock/StockLog.response.dto';
-import React from 'react'
+import '@/styles/modal.css';
 
 interface StockLogProps{
     isOpen: boolean;
     onClose : () => void;
     stockLogDetail : StockLogResponseDto;
-    
 }
+
 function StockLogdetail({isOpen, onClose, stockLogDetail}:StockLogProps) {
   if(!isOpen) return null;
 
   return (
-        <div className="modal-overlay">
-            <div className="stockLog-detail-modal">
-                <button className="modal-close-button" onClick={onClose}>x</button>
-                <h2 className="modal-title">정책 상세 조회</h2>
-                <table className="detail-table">
-                    <tbody> 
+          <div className="modalOverlay">
+              <div className="modalContainer">
+                  <button className="modalCloseButton" onClick={onClose}>x</button>
+                  <h2 className="modalTitle">정책 상세 조회</h2>
+                  <table className="detailTable">
+                    <tbody>
                         <tr>
                             <th>지점</th>
                             <td>{stockLogDetail.branchName}</td>
-                        </tr>                                        
+                        </tr>
                         <tr>
                             <th>직원</th>
                             <td>{stockLogDetail.employeeName}</td>
@@ -41,7 +41,7 @@ function StockLogdetail({isOpen, onClose, stockLogDetail}:StockLogProps) {
                             <th>누적재고량</th>
                             <td>{stockLogDetail.bookAmount}</td>
                         </tr>
-                      
+
                         <tr>
                             <th>날짜</th>
                             <td>{stockLogDetail.actionDate}</td>
@@ -51,14 +51,14 @@ function StockLogdetail({isOpen, onClose, stockLogDetail}:StockLogProps) {
                             <th>설명</th>
                             <td>{stockLogDetail.description}</td>
                         </tr>
-    
+
                     </tbody>
-                    
+
                 </table>
-                
+
             </div>
         </div>
   );
 };
 
-export default StockLogdetail
+export default StockLogdetail;
