@@ -4,6 +4,7 @@ import { StockResponseDto } from '@/dtos/stock/Stock.response.dto';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import StockDetail from './StockDetail';
+import '@/styles/style.css';
 
 const PAGE_SIZE = 10;
 
@@ -86,7 +87,7 @@ function StockSearch({ branches = [] }: StockProps) {
   return (
     <div>
       <h2>재고 검색</h2>
-      <div className=''>
+      <div className='filter-bar'>
         <input
           className='input-search'
           type='text'
