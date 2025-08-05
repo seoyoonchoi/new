@@ -50,7 +50,9 @@ public class StockServiceImpl implements StockService{
             EmployeePrincipal employeePrincipal, Long stockId, StockUpdateRequestDto dto) {
 
 
-        StockActionType actionType = StockActionType.valueOf(dto.getType().toUpperCase(Locale.ROOT));
+
+        StockActionType actionType = StockActionType.valueOf(dto.getStockActionType().toUpperCase(Locale.ROOT));
+
         Long updatedAmount;
 
         Stock stock;
@@ -94,7 +96,9 @@ public class StockServiceImpl implements StockService{
         stockRepository.save(stock);
 
         StockLog log = StockLog.builder()
+
                 .stockActionType(StockActionType.valueOf(dto.getType().toUpperCase(Locale.ROOT)))
+
                 .employee(employeeRepository.findById(employeePrincipal.getEmployeeId())
                         .orElseThrow(() -> new IllegalArgumentException("로그인한 사용자가 존재하지 않습니다")))
                 .bookIsbn(bookRepository.findById(dto.getBookIsbn()).orElseThrow(()-> new IllegalArgumentException((ResponseMessageKorean.RESOURCE_NOT_FOUND))))

@@ -18,18 +18,22 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
   const [cookies] = useCookies(['accessToken']);
   const token = cookies.accessToken;
   const [description, setDescription] = useState('');
+
   const [stockAmount, setStockAmount] = useState<number>(0);
   const [type, setType] = useState<StockActionType>(StockActionType.IN);
   const [employeeId] = useState<number>(0);
   const [isbn, setIsbn] = useState('');
+
   const [branchId, setBranchId] = useState<number>(0);
 
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (stockDetail) {
+
       setStockAmount(stockDetail.amount);
       setIsbn(stockDetail.isbn);
+
       setBranchId(stockDetail.branchId);
       setMessage('');
     }
@@ -42,11 +46,13 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
     }
 
     const dto: StockUpdateRequestDto = {
+
       type,
       employeeId,
       isbn,
       branchId,
       stockAmount,
+
       description,
     };
 
@@ -76,7 +82,9 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
         <h2>재고 수정</h2>
         <div className='form-group'>
           <label>재고 타입</label>
+
           <select value={type} onChange={(e) => setType(e.target.value as StockActionType)}>
+
             <option value={StockActionType.IN}>입고</option>
             <option value={StockActionType.OUT}>출고</option>
             <option value={StockActionType.LOSS}>손실</option>
@@ -88,8 +96,10 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
           <input
             type='text'
             placeholder='책 ISBN을 입력하세요'
+
             value={isbn}
             onChange={(e) => setIsbn(e.target.value)}
+
           />
         </div>
 
@@ -107,8 +117,10 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
           <input
             type='number'
             placeholder='재고변경 수량을 입력해주세요'
+
             value={stockAmount}
             onChange={(e) => setStockAmount(Number(e.target.value))}
+
           />
         </div>
 

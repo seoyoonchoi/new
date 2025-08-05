@@ -85,7 +85,7 @@ public class ReceptionServiceImpl implements ReceptionService {
         reception.setReceptionEmployeeId(employee);
         reception.setReceptionDateAt(LocalDateTime.now());
         StockUpdateRequestDto stockUpdateRequestDto = StockUpdateRequestDto.builder()
-                .type("IN")
+                .stockActionType("IN")
                 .employeeId(employee.getEmployeeId())
                 .bookIsbn(reception.getBookIsbn())
                 .branchId(reception.getPurchaseOrderApprovalId().getPurchaseOrderId().getBranchId().getBranchId())
