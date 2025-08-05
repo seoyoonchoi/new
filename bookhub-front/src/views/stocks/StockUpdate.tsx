@@ -19,10 +19,10 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
   const token = cookies.accessToken;
   const [description, setDescription] = useState('');
 
-  const [stockAmount, setStockAmount] = useState<number>(0);
-  const [type, setType] = useState<StockActionType>(StockActionType.IN);
+  const [amount, setAmount] = useState<number>(0);
+  const [stockActionType, setStockActionType] = useState<StockActionType>(StockActionType.IN);
   const [employeeId] = useState<number>(0);
-  const [isbn, setIsbn] = useState('');
+  const [bookIsbn, setBookIsbn] = useState('');
 
   const [branchId, setBranchId] = useState<number>(0);
 
@@ -31,8 +31,8 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
   useEffect(() => {
     if (stockDetail) {
 
-      setStockAmount(stockDetail.amount);
-      setIsbn(stockDetail.isbn);
+      setAmount(stockDetail.amount);
+      setBookIsbn(stockDetail.isbn);
 
       setBranchId(stockDetail.branchId);
       setMessage('');
@@ -46,13 +46,11 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
     }
 
     const dto: StockUpdateRequestDto = {
-
-      type,
+      stockActionType,
       employeeId,
-      isbn,
+      bookIsbn,
       branchId,
-      stockAmount,
-
+      amount,
       description,
     };
 
@@ -83,7 +81,10 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
         <div className='form-group'>
           <label>재고 타입</label>
 
-          <select value={type} onChange={(e) => setType(e.target.value as StockActionType)}>
+          <select
+            value={stockActionType}
+            onChange={(e) => setStockActionType(e.target.value as StockActionType)}
+          >
 
             <option value={StockActionType.IN}>입고</option>
             <option value={StockActionType.OUT}>출고</option>
@@ -97,8 +98,8 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
             type='text'
             placeholder='책 ISBN을 입력하세요'
 
-            value={isbn}
-            onChange={(e) => setIsbn(e.target.value)}
+            value={bookIsbn}
+            onChange={(e) => setBookIsbn(e.target.value)}
 
           />
         </div>
@@ -118,8 +119,8 @@ function StockUpdate({ isOpen, onClose, onUpdate, stockDetail, stockId }: Update
             type='number'
             placeholder='재고변경 수량을 입력해주세요'
 
-            value={stockAmount}
-            onChange={(e) => setStockAmount(Number(e.target.value))}
+            value={amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
 
           />
         </div>
