@@ -5,6 +5,7 @@ import { StockProps } from '@/components/types/StockProps';
 import StockLogdetail from './StockLogdetail';
 import { useCookies } from 'react-cookie';
 import { useEffect, useState } from 'react';
+import '@/styles/style.css';
 
 const PAGE_SIZE = 10;
 
@@ -89,7 +90,7 @@ function StockLogPage({ branches = [] }: StockProps) {
   return (
     <div>
       <h2>재고 로그</h2>
-      <div>
+      <div className='filter-bar'>
         <select className='input-search' value={type} onChange={(e) => setType(e.target.value as StockActionType)}>
           <option value=''>전체</option>
           <option value={StockActionType.IN}>입고</option>
@@ -127,7 +128,7 @@ function StockLogPage({ branches = [] }: StockProps) {
           검색
         </button>
         <div>
-          <table className=''>
+          <table className='table-policy'>
             <thead>
               <tr>
                 <th>IDX</th>
@@ -149,7 +150,7 @@ function StockLogPage({ branches = [] }: StockProps) {
                   <td>{s.amount}</td>
                   <td>{s.type}</td>
                   <td>
-                    <button className='' onClick={() => openDetailModal(s.stockLogId)}>
+                    <button className='modifyBtn' onClick={() => openDetailModal(s.stockLogId)}>
                       보기
                     </button>
                   </td>

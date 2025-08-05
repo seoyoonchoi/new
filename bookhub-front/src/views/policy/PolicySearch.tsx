@@ -4,6 +4,7 @@ import { PolicyDetailResponseDto, PolicyListResponseDto } from "@/dtos/policy/Po
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import PolicyDetail from "./PolicyDetail";
+import "@/styles/style.css";
 
 const PAGE_SIZE = 10;
 
