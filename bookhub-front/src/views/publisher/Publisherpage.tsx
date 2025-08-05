@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import Createpublisher from './Createpublisher';
 import UpdatePublisher from './UpdatePublisher';
+import '@/styles/style.css';
 
 const PAGE_SIZE = 10;
 
