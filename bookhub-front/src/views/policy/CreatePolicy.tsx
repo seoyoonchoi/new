@@ -3,6 +3,7 @@ import { createPolicy } from "@/apis/policies/PolicyAdmin";
 import { PolicyCreateRequestDto } from "@/dtos/policy/Policy.request.dto";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import '@/styles/modal.css';
 
 interface CreatePolicyProps{
     isOpen: boolean;
@@ -70,11 +71,11 @@ function CreatePolicy({isOpen, onClose, onCreated}:CreatePolicyProps){
     if(!isOpen) return null;
 
     return(
-        <div className="modal-overlay">
-            <div className="policy-detail-modal">
-                <button className="modal-close-button" onClick={onClose}>x</button>
-                <h2 className="modal-title">정책 등록</h2>
-                <div className="form-group">
+        <div className="modalOverlay">
+            <div className="modalContainer">
+                <button className="modalCloseButton" onClick={onClose}>x</button>
+                <h2 className="modalTitle">정책 등록</h2>
+                <div className="formGroup">
                     <label>정책 타입</label>
                     <select value={policyType} onChange={e=>setPolicyType(e.target.value as PolicyType)}>
                         <option value={PolicyType.BOOK_DISCOUNT}>도서 할인</option>
@@ -82,7 +83,7 @@ function CreatePolicy({isOpen, onClose, onCreated}:CreatePolicyProps){
                         <option value={PolicyType.TOTAL_PRICE_DISCOUNT}>총 금액 할인</option>
                     </select>
                 </div>
-                <div className="form-group two-cols">
+                <div className="formGroup twoCols">
                     <div>
                         <label>시작일</label>
                         <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}/>
@@ -93,34 +94,33 @@ function CreatePolicy({isOpen, onClose, onCreated}:CreatePolicyProps){
                     </div>
                 </div>
 
-                <div className="form-group">
+                <div className="formGroup">
                     <label>제목</label>
-                    <input type="text" placeholder="정책 제목을 입력하세요" value={policyTitle} 
+                    <input type="text" placeholder="정책 제목을 입력하세요" value={policyTitle}
                     onChange={e => setPolicyTitle(e.target.value)}/>
                 </div>
 
-                <div className="form-group">
+                <div className="formGroup">
                     <label>설명</label>
-                    <textarea placeholder="정책 설명을 입력하세요" value={policyDescription} 
+                    <textarea placeholder="정책 설명을 입력하세요" value={policyDescription}
                     onChange={e => setPolicyDescription(e.target.value)}/>
                 </div>
 
-                <div className="form-group two-cols">
+                <div className="formGroup twoCols">
                     <div>
                         <label>총 금액</label>
-                        <input type="number" placeholder="총 금액" value={totalPriceAchieve ?? ''} 
+                        <input type="number" placeholder="총 금액" value={totalPriceAchieve ?? ''}
                         onChange={e =>setTotalPriceAchieve(e.target.value ? Number(e.target.value) : undefined)} />
                     </div>
-
                     <div>
                         <label>할인율(%)</label>
-                        <input type="number" placeholder="할인율(%)" value={discountPercent ?? ''} 
+                        <input type="number" placeholder="할인율(%)" value={discountPercent ?? ''}
                         onChange={e =>setDiscountPercent(Number(e.target.value))} />
                     </div>
                 </div>
 
-                {message && <p className="error-message">{message}</p>}
-                <div className="modal-footer">
+                {message && <p className="errorMessage">{message}</p>}
+                <div className="modalFooter">
                     <button onClick={onCreateClick} className="">등록</button>
                 </div>
 

@@ -1,22 +1,22 @@
 
 import { StockResponseDto } from '@/dtos/stock/Stock.response.dto';
+import '@/styles/modal.css';
 
 interface StockDetailProps {
     isOpen: boolean;
     onClose : () => void;
     stockDetail : StockResponseDto;
-    
 }
 
-function PolicyDetail({isOpen, onClose, stockDetail}:StockDetailProps) {
+function StockDetail({isOpen, onClose, stockDetail}:StockDetailProps) {
   if(!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-        <div className="">
-            <button className="modal-close-button" onClick={onClose}>x</button>
-            <h2 className="modal-title">재고 상세 조회</h2>
-            <table className="detail-table">
+    <div className="modalOverlay">
+        <div className="modalContainer">
+            <button className="modalCloseButton" onClick={onClose}>x</button>
+            <h2 className="modalTitle">재고 상세 조회</h2>
+            <table className="detailTable">
                 <tbody>
                     <tr>
                         <th>책 제목</th>
@@ -43,4 +43,4 @@ function PolicyDetail({isOpen, onClose, stockDetail}:StockDetailProps) {
   );
 };
 
-export default PolicyDetail;
+export default StockDetail;

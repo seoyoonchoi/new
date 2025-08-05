@@ -1,14 +1,14 @@
 import { createPublisher } from '@/apis/publisher/publisher';
 import { PublisherRequestDto } from '@/dtos/publishers/publisher.request.dto';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
+import '@/styles/modal.css';
 
 interface CreatePublisherProps{
     isOpen: boolean;
     onClose : () => void;
     onCreated : () => void;
 }
-
 
 function Createpublisher({isOpen, onClose, onCreated}:CreatePublisherProps
 
@@ -44,21 +44,21 @@ function Createpublisher({isOpen, onClose, onCreated}:CreatePublisherProps
         onClose();
         setPublisherName('');
         setMessage('');
-        
+
       };
       if(!isOpen) return null
   return (
-    <div className='modal'>
-      <div><button className="modal-close-button" onClick={onClose}>x</button>
-      <h2 className='modal-title'>출판사 등록</h2>
-      <div><input type="text" value={publisherName} onChange={e => setPublisherName(e.target.value)} /></div>
-      {message && <p className="error-message">{message}</p>}
-      <div className="modal-footer">
-                    <button onClick={onCreateClick} className="">등록</button>
-                </div>
-      
-      </div></div>
+      <div className="modalOverlay">
+        <div className="modalContainer"><button className="modalCloseButton" onClick={onClose}>x</button>
+        <h2 className="modalTitle">출판사 등록</h2>
+        <div className="formGroup"><input type="text" value={publisherName} onChange={e => setPublisherName(e.target.value)} /></div>
+        {message && <p className="errorMessage">{message}</p>}
+        <div className="modalFooter">
+                      <button onClick={onCreateClick} className="">등록</button>
+                  </div>
+
+        </div></div>
   )
 }
 
-export default Createpublisher
+export default Createpublisher;
